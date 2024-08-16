@@ -1,0 +1,80 @@
+body {
+    font-family:initial;
+    background-color: rgb(39, 34, 34);
+    color: rgb(237, 237, 237)
+}
+
+#header{
+    color:rgb(255, 119, 0);
+    text-decoration:wavy;
+    font-size: 54px;
+    font-weight:lighter;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serifs
+
+
+}
+h2{
+    text-decoration: underline;
+    text-decoration-color: black;
+
+}
+
+.header{
+    color: rgb(222, 222, 222);
+    text-align: center;
+    font-size: 75px;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(255, 0, 0);
+    text-decoration: underline;
+
+}
+
+.list{
+    background-color: rgb(255, 145, 0);
+    padding: 10px 10px 10px 25px;
+    border-radius: 80px;
+    border: 2px solid darkgray;
+    margin: 50px 30px;
+
+}
+
+.button{
+    color: rgb(255, 255, 255);
+    text-align: center;
+    border: 2px solid rgb(140, 140, 140);
+    border-radius: 40px;
+    padding: 5px 10px
+}
+.button:hover{
+    color:rgb(255, 190, 111);
+    border: 5px solid orange
+}
+
+.card{
+    justify-self: center;
+    text-align: center;
+    background-color: rgb(222, 122, 0);
+    color: white;
+    padding: 30px;
+    border-radius: 25px;
+}
+
+.card-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    gap: 2rem;
+    margin: 30px 5rem 0 5rem
+}
+
+.home{
+    background-image:var(href="")
+}
+
+p{
+    text-align: center;
+    font-size: 20px;
+}
