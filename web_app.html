@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Browser Escape Room</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      text-align: center;
+    }
+
+    #room {
+      width: 600px;
+      height: 400px;
+      margin: 20px auto;
+      background: url('https://i.imgur.com/8QZ7Z6F.jpg') no-repeat center;
+      background-size: cover;
+      position: relative;
+      border: 3px solid #444;
+    }
+
+    .hidden-object {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      opacity: 0.2;
+    }
+
+    #key {
+      top: 250px;
+      left: 100px;
+    }
+
+    #note {
+      top: 100px;
+      left: 400px;
+    }
+
+    #inventory {
+      margin-top: 10px;
+    }
+
+    #timer {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+
+    input {
+      padding: 5px;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 6px 12px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .button2 {
+      background-color: #444;
+      color: white;
+      padding: 6px 12px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin: 0 5px;
+    }
+
+    .button2:hover {
+      background-color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧩 Escape the Room</h1>
+  <div id="timer">Time: 60</div>
+
+  <div id="room">
+    <div id="key" class="hidden-object"></div>
+    <div id="note" class="hidden-object"></div>
+  </div>
+
+  <div id="inventory">Inventory: </div>
+
+  <div>
+    <p>Enter the code to escape:</p>
+    <input id="codeInput" placeholder="Enter code">
+    <button onclick="checkCode()">Unlock</button>
+  </div>
+
+  <button onclick="getHint()">Hint</button>
+
+  <script>
+    let inventory = [];
+    let timeLeft = 60;
+
+    const inventoryDisplay = document.getElementById("inventory");
+
+    // Timer
+    const timer = setInterval(() => {
+      timeLeft--;
+      document.getElementById("timer").innerText = "Time: " + timeLeft;
+
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        alert("⏰ Time's up! You failed to escape.");
+        location.reload();
+      }
+    }, 1000);
+
+    // Hidden objects
+    document.getElementById("key").onclick = () => {
+      if (!inventory.includes("key")) {
+        inventory.push("key");
+        updateInventory();
+        alert("You found a key!");
+      }
+    };
+
+    document.getElementById("note").onclick = () => {
+      if (!inventory.includes("note")) {
+        inventory.push("note");
+        updateInventory();
+        alert("You found a note: 'The code is 1234'");
+      }
+    };
+
+    function updateInventory() {
+      inventoryDisplay.innerText = "Inventory: " + inventory.join(", ");
+    }
+
+    // Code check
+    function checkCode() {
+      const code = document.getElementById("codeInput").value;
+
+      if (code === "1234" && inventory.includes("key")) {
+        alert("🎉 You escaped!");
+        location.reload();
+      } else {
+        alert("❌ Wrong code or missing item!");
+      }
+    }
+
+    // Hint system
+    function getHint() {
+      if (!inventory.includes("note")) {
+        alert("Look around carefully...");
+      } else {
+        alert("Maybe the note has the answer...");
+      }
+    }
+  </script>
+<ul style="list-style: none; margin-top: 20px;">
+  <li>
+    you can go 
+    <a class="button2" href="../index.html">Resume Page</a> 
+    or
+    <a class="button2" href="./scrap.html">Scrap Page</a>
+    or go to my 
+    <a class="button2" href="./hobby.html">Hobby Page</a>
+  </li>
+</ul>
+</body>
+</html>
